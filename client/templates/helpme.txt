@@ -1,0 +1,141 @@
+    <!--{{> searchUI}}-->
+    <!--{{> similarUI}}-->
+    <!--{{> itemText}}-->
+    <!--{{> prosAndCons}}-->
+    <!--&lt;!&ndash; CSS &ndash;&gt;-->
+    <!--<link href="../assets/css/bootstrap.css" rel="stylesheet">-->
+    <!--<style type="text/css">-->
+        <!--/* Sticky footer styles-->
+        <!---------------------------------------------------- */-->
+        <!--html,-->
+        <!--body {-->
+            <!--height: 100%;-->
+            <!--/* The html and body elements cannot have any padding or margin. */-->
+        <!--}-->
+        <!--/* Wrapper for page content to push down footer */-->
+        <!--#wrap {-->
+            <!--min-height: 100%;-->
+            <!--height: auto !important;-->
+            <!--height: 100%;-->
+            <!--/* Negative indent footer by it's height */-->
+            <!--margin: 0 auto -60px;-->
+        <!--}-->
+        <!--/* Set the fixed height of the footer here */-->
+        <!--#push,-->
+        <!--#footer {-->
+            <!--height: 60px;-->
+        <!--}-->
+        <!--#footer {-->
+            <!--background-color: #f5f5f5;-->
+        <!--}-->
+        <!--/* Lastly, apply responsive CSS fixes as necessary */-->
+        <!--@media (max-width: 767px) {-->
+            <!--#footer {-->
+                <!--margin-left: -20px;-->
+                <!--margin-right: -20px;-->
+                <!--padding-left: 20px;-->
+                <!--padding-right: 20px;-->
+            <!--}-->
+        <!--}-->
+        <!--/* Custom page CSS-->
+        <!---------------------------------------------------- */-->
+        <!--/* Not required for template or sticky footer method. */-->
+        <!--#wrap > .container {-->
+            <!--padding-top: 60px;-->
+        <!--}-->
+        <!--.container .credit {-->
+            <!--margin: 20px 0;-->
+        <!--}-->
+
+        <!--code {-->
+            <!--font-size: 80%;-->
+        <!--}-->
+    <!--</style>-->
+
+    <!--<div class="container">-->
+            <!--<div class="page-header">-->
+                <!--<h1>Sticky footer</h1>-->
+            <!--</div>-->
+            <!--<p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>-->
+            <!--<p>Use if need be, too.</p>-->
+        <!--</div>-->
+
+        <!--<footer class="footer">-->
+            <!--<div class="container">-->
+                <!--<p class="text-muted">Place sticky footer content here.</p>-->
+            <!--</div>-->
+        <!--</footer>-->
+
+    /*,
+    'mouseup': function(e) {
+        var sStr = window.getSelection().toString();
+        sStr = sStr.replace(/(\r\n|\n|\r)/gm,"");
+        var allText = document.getElementById("allText").innerHTML;
+        allText = allText.replace(/(\r\n|\n|\r|\s{2,})/gm,"");
+        allText = allText.replace(/(<p>|<\/p>|<mark>|<\/mark>)/g, "");
+        console.log(allText);
+        console.log(sStr);
+        posStr = allText.indexOf(sStr);
+
+        console.log("posStr " + posStr);
+        var pids = mainText.find({name: 'Kitcbuel'}, {sort: {pid: 1}}).fetch();
+        var lenText = 0;
+        for (var i = 0; i < pids.length && posStr > -1 && sStr.length > 0; i++) {
+            var plen = parseInt(pids[i].plen, 10);
+            if (lenText + plen >= posStr) {
+                var updStr = pids[i].text;
+                var startPos, endPos;
+                if ((lenText + plen) < (posStr + sStr.length)) {
+                    console.log(lenText + " + " + plen + " < " + posStr + " + " + sStr.length);
+                    console.log(sStr[sStr.length-1])
+                    updStr += "</mark>";
+                    endPos = plen;
+                    console.log("1 " + updStr);
+                }
+                else { //if (lenText + pids[i].plen >= posStr + sStr.length) {
+                    var pPos = posStr + sStr.length - lenText;
+                    updStr = [updStr.slice(0, pPos), "</mark>", updStr.slice(pPos)].join('');
+                    endPos = pPos;
+                    sStr = "";
+                    document.getSelection().removeAllRanges();
+                    console.log("1.1 " + updStr);
+                }
+                if ((lenText < posStr) && (lenText + plen > posStr)) {
+                    var pPos = posStr - lenText;
+                    updStr = [updStr.slice(0, pPos), "<mark>", updStr.slice(pPos)].join('');
+                    startPos = pPos;
+                    console.log("2.1 " + updStr);
+                }
+                else {
+                    updStr = "<mark>" + updStr;
+                    startPos = 0;
+                    console.log("2.2 " + updStr);
+                }
+                //mainText.update(pids[i]._id, {$set: {text: updStr} });
+                var marks = marked.find({pId: pids[i].pid}).fetch();
+                for (var j = 0; j < marks.length; j++) {
+                    //console.log(parseInt(marks[j].endPos, 10) + " >= " + startPos + " && " + endPos + " >= " + parseInt(marks[j].startPos, 10));
+                    if (parseInt(marks[j].endPos, 10) >= startPos && endPos >= parseInt(marks[j].startPos,  10)) {
+                        marked.remove({_id: marks[j]._id});
+                    }
+                }
+                marked.insert({pId: pids[i].pid, startPos: startPos, endPos: endPos});
+
+                marks = marked.find({pId: pids[i].pid}, {sort: {endPos: -1}}).fetch();
+                var markedText = pids[i].text;
+                for (var j = 0; j < marks.length; j++) {
+                    markedText = [markedText.slice(0, parseInt(marks[j].endPos, 10)), "</mark>", markedText.slice(parseInt(marks[j].endPos, 10))].join('');
+                    markedText = [markedText.slice(0, parseInt(marks[j].startPos, 10)), "<mark>", markedText.slice(parseInt(marks[j].startPos, 10))].join('');
+                }
+                console.log(markedText);
+                mainText.update(pids[i]._id, {$set: {markedText: markedText}});
+            }
+            //console.log("3 " + updStr);
+            lenText += plen;
+        }
+        //console.log(sStr);
+        //console.log(allText);
+        //console.log(sStr.startContainer.parentNode);
+        //strBegin = sStr.substring(0, 20);
+        //strEnd = sStr.substring(sStr.length() - 20);
+    }*/

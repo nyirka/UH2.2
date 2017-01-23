@@ -1,0 +1,17 @@
+{
+"turkserver": {
+"adminPassword": "superpass!",
+"experiment": {
+"limit": {
+"batch": 1
+}
+},
+"mturk": {
+"sandbox": true,
+"accessKeyId": "AKIAJBTP5WKCQ6NL55EA",
+"secretAccessKey": "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",
+"externalUrl": "https://uh2.mod.bz",
+"frameHeight": 400
+}
+}
+}

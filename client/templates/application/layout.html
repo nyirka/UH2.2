@@ -1,0 +1,14 @@
+<template name="layout">
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li role="presentation" id="taskTabDesc"><a class="disableEnable" href={{pathFor 'description'}}>Description</a></li>
+            <li role="presentation" id="taskTabQuiz"><a class="disableEnable" href={{pathFor 'quiz'}}>Quiz</a></li>
+            <li role="presentation" class="disabled" id="taskTabLi"><a id="taskTabLink" href={{pathFor 'itemUI'}}>Task</a></li>
+        </ul>
+
+        <div id="main">
+            {{> yield}}
+        </div>
+    </div>
+</template>
+

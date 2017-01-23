@@ -1,0 +1,222 @@
+<template name="quiz">
+    <h2 id="quizHeader">Quiz</h2>
+
+    <p><strong>You have <span style="color: red">{{triesLeft}}</span> attempts to complete  the quiz!</strong></p>
+
+    {{#if experimentType "Budget"}}
+        <p>1. What do you need to include into your budget?</p>
+        <div class="radio">
+            <label><input type="radio" name="questBudget1" id="questBudget11" class='answerCB' checked="{{setAnswerCB "questBudget1" "questBudget11"}}">Round trip flight tickets</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudget1" id="questBudget12" class='answerCB' checked="{{setAnswerCB "questBudget1" "questBudget12"}}">Transportation from the airport to the resort and back to the airport</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudget1" id="questBudget13" class='answerCB' checked="{{setAnswerCB "questBudget1" "questBudget13"}}">Housing and food</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudget1" id="questBudget14" class='answerCB' checked="{{setAnswerCB "questBudget1" "questBudget14"}}">Ski equipment rent</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudget1" id="questBudget15" class='answerCB' checked="{{setAnswerCB "questBudget1" "questBudget15"}}">Ski-pass for 10 full days</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudget1" id="questBudget16" class='answerCB' checked="{{setAnswerCB "questBudget1" "questBudget16"}}">Ski lessons</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudget1" id="questBudget17" class='answerCB' checked="{{setAnswerCB "questBudget1" "questBudget17"}}">Some events for 3 of you for each of 4 days when you do not ski</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudget1" id="questBudget1Right" class='answerCB' checked="{{setAnswerCB "questBudget1" "questBudget1Right"}}">All of the above</label>
+        </div>
+
+        <br>
+        <p>2. What budget do you consider?</p>
+        <div class="radio">
+            <label><input type="radio" name="questBudge2"  id="questBudge2Right" class='answerCB' checked="{{setAnswerCB "questBudge2" "questBudge2Right"}}">4500 euro</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudge2" id="questBudge21" class='answerCB' checked="{{setAnswerCB "questBudge2" "questBudge21"}}">5000 euro</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudge2" id="questBudge22" class='answerCB' checked="{{setAnswerCB "questBudge2" "questBudge22"}}">$4500</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudge2" id="questBudge23" class='answerCB' checked="{{setAnswerCB "questBudge2" "questBudge23"}}">$5000</label>
+        </div>
+
+        <br>
+        <p>3. What prices you should be looking for?</p>
+        <div class="radio">
+            <label><input type="radio" name="questBudge3" id="questBudge31" class='answerCB' checked="{{setAnswerCB "questBudge3" "questBudge31"}}">Average</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudge3" id="questBudge3Right" class='answerCB' checked="{{setAnswerCB "questBudge3" "questBudge3Right"}}">Lowest</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudge3" id="questBudge32" class='answerCB' checked="{{setAnswerCB "questBudge3" "questBudge32"}}">Greatest</label>
+        </div>
+
+        <br>
+        <p>4. What is the time period that you are interested in?</p>
+        <div class="radio">
+            <label><input type="radio" name="questBudge5" id="questBudge5Right" class='answerCB' checked="{{setAnswerCB "questBudge5" "questBudge5Right"}}">From 23 of December till 6 of January</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudge5" id="questBudge51" class='answerCB' checked="{{setAnswerCB "questBudge5" "questBudge51"}}">From 22 of December till 5 of January</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudge5" id="questBudge52" class='answerCB' checked="{{setAnswerCB "questBudge5" "questBudge52"}}">From 21 of December till 4 of January</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questBudge5" id="questBudge53" class='answerCB' checked="{{setAnswerCB "questBudge5" "questBudge53"}}">From 20 of December till 3 of January</label>
+        </div>
+    {{/if}}
+    
+    {{#if experimentType "Famous"}}
+        <p>1. Who do you need to identify in the text?</p>
+        <div class="radio">
+            <label><input type="radio" name="questFamous1" id="questFamous11" class='answerCB' checked="{{setAnswerCB "questFamous1" "questFamous11"}}">Only those individuals who visited the ski resort during the last 10 years</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questFamous1" id="questFamous12" class='answerCB' checked="{{setAnswerCB "questFamous1" "questFamous12"}}">Only those individuals who were born in the city or in its vicinity</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questFamous1" id="questFamous1Right" class='answerCB' checked="{{setAnswerCB "questFamous1" "questFamous1Right"}}">All famous, prominent, noble persons. For example, artists, politicians, athletes, etc. </label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questFamous1" id="questFamous13" class='answerCB' checked="{{setAnswerCB "questFamous1" "questFamous13"}}">The proper names of all living beings: humans, animals, extraterrestrials etc.</label>
+        </div>
+
+        <br>
+        <p>2. What is your task?</p>
+        <div class="radio">
+            <label><input type="radio" name="questFamous2" id="questFamous2Right1" class='answerCB' checked="{{setAnswerCB "questFamous2" "questFamous2Right1"}}">Read the text and answer if the number of famous persons, mentioned in the text, is strictly less than N</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questFamous2" id="questFamous2Right2" class='answerCB' checked="{{setAnswerCB "questFamous2" "questFamous2Right2"}}">Mark all sentences that will help to determine if the number of famous persons, mentioned in the text, is strictly less than N</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questFamous2" id="questFamous23" class='answerCB' checked="{{setAnswerCB "questFamous2" "questFamous23"}}">First, mark all sentences that will help to determine if the number of famous persons, mentioned in the text, is strictly less than N. Then, at the bottom of the text press the button which corresponds to the answer to that question.</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questFamous2" id="questFamous24" class='answerCB' checked="{{setAnswerCB "questFamous2" "questFamous24"}}">Determine how many caps of coffee you will drink while reading the text</label>
+        </div>
+
+        <br>
+        <p>3. What is the value of N in the previous question?</p>
+        <div class="radio">
+            <label><input type="radio" name="questFamous3" id="questFamous31" class='answerCB' checked="{{setAnswerCB "questFamous3" "questFamous31"}}">12</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questFamous3" id="questFamous32" class='answerCB' checked="{{setAnswerCB "questFamous3" "questFamous32"}}">14</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questFamous3" id="questFamous3Right" class='answerCB' checked="{{setAnswerCB "questFamous3" "questFamous3Right"}}">16</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questFamous3" id="questFamous33" class='answerCB' checked="{{setAnswerCB "questFamous3" "questFamous33"}}">18</label>
+        </div>
+
+        <br>
+        <p>4. If you see the same name more than once in the text, what should you do?</p>
+        <div class="radio">
+            <label><input type="radio" name="questFamous4" id="questFamous41" class='answerCB' checked="{{setAnswerCB "questFamous4" "questFamous41"}}">Count this name as many times as it appears</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questFamous4" id="questFamous4Right" class='answerCB' checked="{{setAnswerCB "questFamous4" "questFamous4Right"}}">Count this name only once</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questFamous4" id="questFamous42" class='answerCB' checked="{{setAnswerCB "questFamous4" "questFamous42"}}">Do not count this name at all and treat the multiple occurrences as an error. </label>
+        </div>
+    {{/if}}
+
+    {{#if experimentType "Events"}}
+        <p>1. What events do you need to identify in the text?</p>
+        <div class="radio">
+            <label><input type="radio" name="questEvents1" id="questEvents11" class='answerCB' checked="{{setAnswerCB "questEvents1" "questEvents11"}}">Sport events</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questEvents1" id="questEvents12" class='answerCB' checked="{{setAnswerCB "questEvents1" "questEvents12"}}">Cultural events</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questEvents1" id="questEvents13" class='answerCB' checked="{{setAnswerCB "questEvents1" "questEvents13"}}">Special Christmas events</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questEvents1" id="questEvents1Right" class='answerCB' checked="{{setAnswerCB "questEvents1" "questEvents1Right"}}">All of the above</label>
+        </div>
+
+        <br>
+        <p>2. What is the time period that you are interested in?</p>
+        <div class="radio">
+            <label><input type="radio" name="questEvents2" id="questEvents21" class='answerCB' checked="{{setAnswerCB "questEvents2" "questEvents21"}}">From 24 of December till 5 of January</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questEvents2" id="questEvents22" class='answerCB' checked="{{setAnswerCB "questEvents2" "questEvents22"}}">From 20 of December till 5 of January</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questEvents2" id="questEvents23" class='answerCB' checked="{{setAnswerCB "questEvents2" "questEvents23"}}">From 24 of December till 10 of January</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questEvents2" id="questEvents2Right" class='answerCB' checked="{{setAnswerCB "questEvents2" "questEvents2Right"}}">From 20 of December till 10 of January</label>
+        </div>
+
+        <br>
+        <p>3. What is your task?</p>
+        <div class="radio">
+            <label><input type="radio" name="questEvents3" id="questEvents3Right1" class='answerCB' checked="{{setAnswerCB "questEvents3" "questEvents3Right1"}}">Read the text and answer if it is possible to visit at least once all the events which take place from 12/20 to 01/10</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questEvents3" id="questEvents3Right2" class='answerCB' checked="{{setAnswerCB "questEvents3" "questEvents3Right2"}}">Mark all sentences that will help to determine if it is possible to visit at least once all the events which take place from 12/20 to 01/10</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questEvents3" id="questEvents31" class='answerCB' checked="{{setAnswerCB "questEvents3" "questEvents31"}}">First, mark all sentences that will help to determine if it is possible to visit at least once all the events which take place from 12/20 to 01/10</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questEvents3" id="questEvents32" class='answerCB' checked="{{setAnswerCB "questEvents3" "questEvents32"}}">Determine how many caps of coffee you will drink while reading the text</label>
+        </div>
+
+        <br>
+        <p>4. Where the events of your interest should take place?</p>
+        <div class="radio">
+            <label><input type="radio" name="questEvents4" id="questEvents41" class='answerCB' checked="{{setAnswerCB "questEvents4" "questEvents41"}}">At the ski resort only</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questEvents4" id="questEvents42" class='answerCB' checked="{{setAnswerCB "questEvents4" "questEvents42"}}">At the ski resort and in its vicinity</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="questEvents4" id="questEvents4Right" class='answerCB' checked="{{setAnswerCB "questEvents4" "questEvents4Right"}}">Anywhere</label>
+        </div>
+    {{/if}}
+
+    {{#if experimentType "3A"}}
+    <br>
+    <p>How can you highlight the sentence in the text?</p>
+        <div class="radio">
+            <label><input type="radio" name="question3" id="question31" class='answerCB' checked="{{setAnswerCB "question3" "question31"}}">Select the sentence and double click on it</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question3" id="right3" class='answerCB' checked="{{setAnswerCB "question3" "right3"}}">First select the sentence by mouse and then press “s” on the keyboard</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question3" id="question32" class='answerCB' checked="{{setAnswerCB "question3" "question32"}}">Select the sentence by mouse and it will be considered as marked by default</label>
+        </div>
+    <br>
+    <p>How can you remove highlighting in the text?</p>
+        <div class="radio">
+            <label><input type="radio" name="question4" id="question41" class='answerCB' checked="{{setAnswerCB "question4" "question41"}}">Select the sentence and double click on it</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question4" id="right4" class='answerCB' checked="{{setAnswerCB "question4" "right4"}}">First select the marked sentence and then press “d” on the keyboard.</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question4" id="question42" class='answerCB' checked="{{setAnswerCB "question4" "question42"}}">Select the sentence by mouse and it will be considered as unmarked by default</label>
+        </div>
+    {{/if}}
+
+    <div id="wrongQuiz" style="visibility: hidden">
+        <p style="color: red">Some of your answers are incorrect. Please read the description and try again</p>
+    </div>
+    <a href="{{pathFor 'description'}}" class="btn btn-default" role="button">Back</a>
+    <a href="{{pathFor 'itemUI'}}" class="btn btn-primary" role="button" id="quizCheck">Next</a>
+</template>

@@ -1,0 +1,15 @@
+<template name="yesNo">
+    <div class="input-group">
+        {{#if experimentType "Budget"}}
+            <label>Is the minimal budget that your family needs to go on vacation is less than 4500 euro?</label>
+        {{/if}}
+        {{#if experimentType "Famous"}}
+            <label>Is the number of famous persons mentioned in the text strictly less than 16?</label>
+        {{/if}}
+        {{#if experimentType "Events"}}
+            <label>Is it possible to visit at least once all the events which take place from 20th of December to 10th of January?</label>
+        {{/if}}
+        <button class="btn btn-success {{isDisabled 'yes'}}" type="button" id="yesAnswer">Yes</button>
+        <button class="btn btn-danger {{isDisabled 'no'}}" type="button" id="noAnswer">No</button>
+    </div>
+</template>

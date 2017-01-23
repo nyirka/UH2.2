@@ -1,0 +1,88 @@
+<template name="itemUI">
+    {{#if testTask}}
+        <br>
+        <p><strong>Here is a <span style="color: red">preliminary test</span> for you to try how to answer the question.</strong></p>
+        {{#if experimentType "1" "Budget"}}
+            <p>Please read the paragraph and answer if the minimum budget to get from Nashville to St. Petersburg for two persons is less than $1800.
+                The correct answer to this test question will provide you a bonus.</p>
+            <p>There is no direct flight from Nashville to St. Petersburg. So, you have the following options. You can purchase
+                a flight ticket from Nashville to Charlotte and then to New-York for $430. After that, you need to get to
+                Moscow – the capital of Russia and a huge transportation hub. The direct flight from New-York to Moscow is $920.
+                However, there is a possibility to purchase a connecting flight with a stop somewhere in Europe. If you have
+                a Schengen visa why not to spend a nice day in Spain or Finland? A flight from NY to Moscow with 13-hour
+                connection in Helsinki is <span style="{{highlightClues}}">$720</span>. Unfortunately, the most of this time falls during the night hours. Yet a better option
+                is to make a connection in Barcelona. You will get a chance to explore the city from 7am till midnight, and a
+                ticket costs just $780. Next, you can go from Moscow to St. Petersburg by plane for $190 or by comfortable night
+                train for <span style="{{highlightClues}}">$80</span>. Additionally, if you can bear slipping in a bus you can take advantage of this type of
+                transportation and save a bit of money. An express bus from Moscow to St. Petersburg will cost you $90, and to
+                get from Nashville to NY is <span style="{{highlightClues}}">$95</span>.</p>
+            <label>Is the minimal budget to get from Nashville to St. Petersburg for two persons is less than $1900?</label>
+        {{/if}}
+
+        {{#if experimentType "1" "Events"}}
+            <p>Please read the paragraph and answer if it is possible to visit all mentioned tours during one week.</p>
+            <p>One of the world's most beautiful cities, St. Petersburg has all the ingredients for an unforgettable travel
+            experience. Situated on the Neva River, it was founded by Tsar Peter the Great on May 27, 1703. The Historic Centre,
+            represented by architecture of notable Bartolomeo Rastrelli, constitutes a UNESCO World Heritage Site. Neva River
+            divides the historic center onto east and west parts. So, to move from one part to the other you need to take
+            into account the Palace Bridge openings schedule. It is <span style="{{highlightClues}}">open from 1:25 pm to 2:15 pm</span>
+            and from <span style="{{highlightClues}}">3:10 pm to 4:55 pm. Only when a drawbridge</span> (a moveable bridge that
+            lets ships pass through) <span style="{{highlightClues}}">is closed you can easily get from east part
+            to the west.</span> There are a number of free city tours in St. Petersburg. For example, on Monday you can visit the
+            Hermitage from 10:00 am to 1:00 pm; and on Tuesday from 11:00 am to <span style="{{highlightClues}}">1:30 pm you can walk</span>
+            with guide along Nevsky Prospekt on the east bank of Neva or from <span style="{{highlightClues}}">3:30 pm</span>
+            to 6:00 take a tour to Winter Palace, which is on the west bank.</p>
+            <label>Is it possible to visit all mentioned tours during one week?</label>
+        {{/if}}
+
+        {{#if experimentType "1" "Famous"}}
+            <p>Please read the paragraph and answer if the number of famous persons mentioned in the text is less than 5.</p>
+            <p>One of the world's most beautiful cities, St. Petersburg has all the ingredients for an unforgettable travel
+                experience. Situated on the Neva River, it was founded by Tsar <span style="{{highlightClues}}">Peter the Great</span>
+                on May 27, 1703. The Historic Center, represented by architecture of notable <span style="{{highlightClues}}">Bartolomeo Rastrelli</span>,
+                constitutes a UNESCO World Heritage Site. Neva River divides the historic center onto east and west parts which are
+                connected by numerous drawbridges (moveable bridges that let ships pass through). Drawbridges by themselves are
+                considered as aesthetic masterpieces. Great artists like <span style="{{highlightClues}}">Ivan Shishkin</span> and
+                <span style="{{highlightClues}}">Ilya Repin</span> walked along those bridges. Today, many visitors also try
+                to commemorate their names and scribe messages like “Smith was here” or “D. Williams. 2016”. Palace Bridge spans
+                the historic center of St. Petersburg. When raised at night, it provides one of the most spectacular views in the city,
+                as well as gathering point for thousands of revelers during the White Nights.</p>
+            <label>Is the number of famous persons mentioned in the text less than 16?</label>
+        {{/if}}
+
+        {{#if experimentType "1" "All"}}
+            <button class="btn btn-success" type="button" id="testYesAnswer">Yes</button>
+            <button class="btn btn-danger" type="button" id="testNoAnswer">No</button>
+        {{/if}}
+
+        <div id="rightTestAnswer" style="{{showRightAnswer}}">
+            <p><strong>The correct answer is <span style="color: red">YES</span>. The clues are highlighted.</strong></p>
+            <button class="btn btn-primary" type="button" id="gotIt">Got it</button>
+        </div>
+
+        {{#if experimentType "3A"}}
+            <p><strong>Here is a simple test paragraph for you to try how to highlight sentences. Please mark all female names and
+                unmark all other sentences in the following passage.</strong></p>
+            {{#each showTestText}}
+                <p id="testP">{{{markedText}}}</p>
+            {{/each}}
+        {{/if}}
+    {{/if}}
+
+    {{#unless testTask}}
+        {{> itemText}}
+        <br>
+        {{#if provideAnswer}}
+            {{> yesNo}}
+        {{/if}}
+
+        {{#unless provideAnswer}}
+            <button class="btn btn-primary" type="button" id="submitMarked">Submit results</button>
+        {{/unless}}
+
+        <br>
+        <div style="visibility: {{isVisible}}"><p>Please read the text carefully. The buttons remain inactive until the minimum amount of time needed to read the text passes.</p></div>
+        <p><strong>Please note, that your bonus is entirely dependent on the correctness of your answer.</strong></p>
+        <a href="{{pathFor 'quiz'}}" class="btn btn-default" role="button">Back</a>
+    {{/unless}}
+</template>
